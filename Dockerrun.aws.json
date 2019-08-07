@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "prashanth20/fibbcalc-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name" : "server",
+            "image": "prashanth20/fibbcalc-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name" : "worker",
+            "image": "prashanth20/fibbcalc-worker",
+            "hostname": "worker",
+            "essential": false            
+        },
+        {
+            "name" : "nginx",
+            "image": "prashanth20/fibbcalc-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings" : [
+                {
+                    "hostPort" : 80,
+                    "containerPort" : 80
+                }
+            ],
+            "links": ["client","server"]
+        }
+        
+    ]
+}

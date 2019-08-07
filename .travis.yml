@@ -25,15 +25,15 @@ after_success:
   - docker push prashanth20/fibbcalc-server
   - docker push prashanth20/fibbcalc-worker
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-east-2"
-#   app: "docker-frontendapp"
-#   env: "DockerFrontendapp-env"
-#   bucket-name: "elasticbeanstalk-us-east-2-289403690958"
-#   bucket-path: "docker-frontendapp"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY" 
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker # See the AWS->elastic beanstalk website-> application name
+  env: MultiDocker-env # See the AWS->elastic beanstalk website-> application name -> ____
+  bucket-name: elasticbeanstalk-us-east-2-289403690958
+  bucket-path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" 
